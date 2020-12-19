@@ -4,23 +4,19 @@ import org.springframework.http.HttpStatus;
 
 public class WebResponse<T> {
 
-    int code;
-    HttpStatus status;
-    T data;
+    private ResponseStatus status;
+    private T data;
 
-    public int getCode() {
-        return code;
+    public WebResponse(T data, ResponseStatus status) {
+        this.status = status;
+        this.data = data;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public HttpStatus getStatus() {
+    public ResponseStatus getStatus() {
         return status;
     }
 
-    public void setStatus(HttpStatus status) {
+    public void setStatus(ResponseStatus status) {
         this.status = status;
     }
 

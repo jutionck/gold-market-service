@@ -1,20 +1,77 @@
-package com.enigmacamp.mandiri.goldmarket.model.nasabah;
+package com.enigmacamp.mandiri.goldmarket.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
 
-public class NasabahResponse {
+@Entity
+@Table(name = "m_customer")
+public class Customer {
 
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
     private String id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
-    private Date birthdayDate;
+
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "status")
     private int status;
+
+    @Column(name = "user_name")
     private String userName;
+
+    @Column(name = "user_password")
     private String password;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "created_at")
     private Date createdAt;
+
+    @Column(name = "updated_at")
     private Date updatedAt;
+
+    public Customer(
+            String firstName,
+            String lastName,
+            Date dateOfBirth,
+            String address,
+            int status,
+            String userName,
+            String password,
+            String email,
+            Date createdAt,
+            Date updatedAt) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.status = status;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Customer() {}
 
     public String getId() {
         return id;
@@ -40,12 +97,12 @@ public class NasabahResponse {
         this.lastName = lastName;
     }
 
-    public Date getBirthdayDate() {
-        return birthdayDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setBirthdayDate(Date birthdayDate) {
-        this.birthdayDate = birthdayDate;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getAddress() {
@@ -102,22 +159,5 @@ public class NasabahResponse {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    @Override
-    public String toString() {
-        return "NasabahResponse{" +
-                "id='" + id + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthdayDate=" + birthdayDate +
-                ", address='" + address + '\'' +
-                ", status=" + status +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
     }
 }
