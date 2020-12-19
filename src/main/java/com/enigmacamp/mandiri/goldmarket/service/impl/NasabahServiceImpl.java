@@ -17,23 +17,22 @@ public class NasabahServiceImpl implements NasabahService {
     @Autowired
     NasabahRepository nasabahRepository;
 
-
     @Override
     public NasabahResponse create(CreateNasabahRequest createNasabahRequest) {
 
-        ValidationUtil validationUtil = new ValidationUtil();
-        validationUtil.validation(createNasabahRequest);
+//        ValidationUtil validationUtil = new ValidationUtil();
+//        validationUtil.validation(createNasabahRequest);
 
         Date createdAt = new Date();
         Nasabah nasabah = new Nasabah(
-        createNasabahRequest.getFirstName(),
-        createNasabahRequest.getLastName(),
-        createNasabahRequest.getBirthdayDate(),
-        createNasabahRequest.getAddress(),
-        createNasabahRequest.getStatus(),
-        createNasabahRequest.getUserName(),
-        createNasabahRequest.getPassword(),
-        createNasabahRequest.getEmail(),
+                createNasabahRequest.getFirstName(),
+                createNasabahRequest.getLastName(),
+                createNasabahRequest.getBirthdayDate(),
+                createNasabahRequest.getAddress(),
+                createNasabahRequest.getStatus(),
+                createNasabahRequest.getUserName(),
+                createNasabahRequest.getPassword(),
+                createNasabahRequest.getEmail(),
                 createdAt,
                 null
         );
@@ -54,7 +53,6 @@ public class NasabahServiceImpl implements NasabahService {
         nasabahResponse.setEmail(nasabah.getEmail());
         nasabahResponse.setCreatedAt(nasabah.getCreatedAt());
         nasabahResponse.setUpdatedAt(nasabah.getUpdatedAt());
-        System.out.println(nasabahResponse);
         return nasabahResponse;
     }
 

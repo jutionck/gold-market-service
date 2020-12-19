@@ -1,9 +1,7 @@
 package com.enigmacamp.mandiri.goldmarket.controller;
 
-import com.enigmacamp.mandiri.goldmarket.entity.Nasabah;
 import com.enigmacamp.mandiri.goldmarket.model.nasabah.CreateNasabahRequest;
 import com.enigmacamp.mandiri.goldmarket.model.nasabah.NasabahResponse;
-import com.enigmacamp.mandiri.goldmarket.repository.NasabahRepository;
 import com.enigmacamp.mandiri.goldmarket.service.NasabahService;
 import com.enigmacamp.mandiri.goldmarket.utils.WebResponse;
 import org.springframework.beans.factory.annotation.Autowired;
