@@ -26,7 +26,7 @@ public class CustomerController {
     }
 
     @PostMapping(
-            value = "",
+            value = "/registration",
             produces = "application/json",
             consumes = "application/json"
     )

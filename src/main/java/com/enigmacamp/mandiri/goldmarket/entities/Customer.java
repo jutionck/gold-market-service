@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "m_customer")
@@ -31,7 +32,7 @@ public class Customer {
     private String address;
 
     @Column(name = "status")
-    private int status;
+    private boolean status;
 
     @Column(name = "user_name")
     private String userName;
@@ -48,12 +49,24 @@ public class Customer {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     public Customer(
             String firstName,
             String lastName,
             Date dateOfBirth,
             String address,
-            int status,
+            boolean status,
             String userName,
             String password,
             String email,
@@ -113,11 +126,11 @@ public class Customer {
         this.address = address;
     }
 
-    public int getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -160,4 +173,6 @@ public class Customer {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
 }
