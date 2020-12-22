@@ -6,12 +6,35 @@
 
 ### API Spec
 
+Require Authentication:
+- Request: POST
+- Endpoint: `/auth`
+- Header :
+    - Content-Type: application/json
+    - Accept: application/json
+- Body : 
+```json
+{
+    "username": "String",
+    "password": "String"
+}
+```
+
+Response:
+```json
+{
+    "token": "String"
+}
+```
+After Get Token:
+
 #### Create Customer
 - Request: POST
 - Endpoint : `/api/customer`
 - Header :
     - Content-Type: application/json
     - Accept: application/json
+    - Authorization: Bearer token
 - Body : 
 ```json
 {
@@ -19,7 +42,7 @@
     "lastName": "String",
     "dateOfBirth": "Date",
     "address": "String",
-    "status": "Number",
+    "status": "Boolean",
     "userName": "String",
     "password": "String",
     "email": "String"
@@ -39,7 +62,7 @@ Response:
           "lastName": "String",
           "dateOfBirth": "Date",
           "address": "String",
-          "status": "Number",
+          "status": "Boolean",
           "userName": "String",
           "password": "String",
           "email": "String"
@@ -52,6 +75,7 @@ Response:
 - Endpoint : `/api/customer/{id}`
 - Header :
     - Content-Type: application/json
+    - Authorization: Bearer token
     
 Response:
 ```json
@@ -66,7 +90,7 @@ Response:
           "lastName": "String",
           "dateOfBirth": "Date",
           "address": "String",
-          "status": "Number",
+          "status": "Boolean",
           "userName": "String",
           "password": "String",
           "email": "String"
@@ -80,6 +104,7 @@ Response:
 - Header :
     - Content-Type: application/json
     - Accept: application/json
+    - Authorization: Bearer token
 - Body :
 ```json
 {
@@ -87,7 +112,7 @@ Response:
     "lastName": "String",
     "dateOfBirth": "Date",
     "address": "String",
-    "status": "Number",
+    "status": "Boolean",
     "userName": "String",
     "password": "String",
     "email": "String"
@@ -106,7 +131,7 @@ Response:
         "firstName": "String",
         "lastName": "String",
         "dateOfBirth": "Date",
-        "address": "String",
+        "address": "Boolean",
         "status": "Number",
         "userName": "String",
         "password": "String",
@@ -120,6 +145,7 @@ Response:
 - Endpoint : `/api/customer?page=page?rows=5`
 - Header :
     - Content-Type: application/json
+    - Authorization: Bearer token
 - Query Param :
     - Page : number
     - Rows : number
@@ -138,7 +164,7 @@ Response:
           "lastName": "String",
           "dateOfBirth": "Date",
           "address": "String",
-          "status": "Number",
+          "status": "Boolean",
           "userName": "String",
           "password": "String",
           "email": "String"
@@ -156,3 +182,5 @@ Response:
 #### Delete Customer
 - Request: DELETE
 - Endpoint : `/api/customer/{id}`
+- Header: 
+    - Authorization: Bearer token
