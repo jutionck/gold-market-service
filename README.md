@@ -30,7 +30,7 @@ After Get Token:
 
 #### Create Customer
 - Request: POST
-- Endpoint : `/api/customer`
+- Endpoint : `/api/customer/registration`
 - Header :
     - Content-Type: application/json
     - Accept: application/json
